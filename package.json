@@ -1,7 +1,7 @@
 {
   "name": "create-update-app",
   "description": "Create Update app with one command",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Update Team <support@update.dev>",
   "scripts": {
     "build": "tsup src --minify",
@@ -29,7 +29,7 @@
     "prompts": "^2.4.2",
     "rimraf": "^6.0.1",
     "tar": "^7.4.3",
-    "tsup": "^5.12.1",
+    "tsup": "^8.4.0",
     "typescript": "^4.6.3"
   },
   "license": "MIT"
