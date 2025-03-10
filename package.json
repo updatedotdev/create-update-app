@@ -1,11 +1,11 @@
 {
   "name": "create-update-app",
   "description": "Create Update app with one command",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Update Team <support@update.dev>",
   "scripts": {
     "build": "tsup src --minify",
-    "clean": "shx rm -rf lib",
+    "clean": "rimraf dist",
     "dev": "tsup --watch",
     "prepublishOnly": "npm run clean && npm run build"
   },
@@ -27,6 +27,7 @@
     "ora": "^8.2.0",
     "picocolors": "^1.1.1",
     "prompts": "^2.4.2",
+    "rimraf": "^6.0.1",
     "tar": "^7.4.3",
     "tsup": "^5.12.1",
     "typescript": "^4.6.3"
