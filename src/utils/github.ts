@@ -31,7 +31,11 @@ export async function downloadAndExtractRepo(root: string, name: string) {
     file: tempFile,
     cwd: root,
     strip: 2,
-    filter: path => !path.endsWith("package-lock.json"),
+    filter: path =>
+      !path.endsWith("package-lock.json") &&
+      !path.endsWith("yarn.lock") &&
+      !path.endsWith("pnpm-lock.yaml") &&
+      !path.endsWith("bun.lockb"),
   });
 
   await fs.unlink(tempFile);

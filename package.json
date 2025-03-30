@@ -1,7 +1,7 @@
 {
   "name": "create-update-app",
   "description": "Create Update app with one command",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Update Team <support@update.dev>",
   "scripts": {
     "build": "tsup src --minify",
