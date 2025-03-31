@@ -7,6 +7,7 @@ import picocolors from "picocolors";
 import fs from "fs-extra";
 import retry from "async-retry";
 import { downloadAndExtractRepo } from "./utils/github";
+import { tryGitInit } from "./utils/git";
 
 export async function createApp({
   directory,
@@ -55,10 +56,28 @@ export async function createApp({
   );
 
   loader.start();
-  await retry(() => downloadAndExtractRepo(root, framework), {
-    retries: 3,
-  });
+  await retry(
+    () =>
+      downloadAndExtractRepo(root, {
+        username: "updatedotdev",
+        name: "examples",
+        branch: "main",
+        filePath: "next",
+      }),
+    {
+      retries: 3,
+    }
+  );
   loader.succeed();
+
+  const packageJsonPath = path.join(root, "package.json");
+  if (fs.existsSync(packageJsonPath)) {
+    const packageJson = await fs.readJson(packageJsonPath);
+    packageJson.name = path.basename(root);
+    await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
+  }
+
+  tryGitInit(root, `feat(create-update-app): create ${framework} app`);
 
   if (projectDirIsCurrentDir) {
     logger.log(
@@ -76,12 +95,5 @@ export async function createApp({
         path.join(relativeProjectDir)
       )}`
     );
-  }
-
-  const packageJsonPath = path.join(root, "package.json");
-  if (fs.existsSync(packageJsonPath)) {
-    const packageJson = await fs.readJson(packageJsonPath);
-    packageJson.name = path.basename(root);
-    await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
   }
 }
