@@ -1,8 +1,24 @@
 {
   "name": "create-update-app",
   "description": "Create Update app with one command",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Update Team <support@update.dev>",
+  "homepage": "https://update.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/updatedev/update.git"
+  },
+  "bugs": {
+    "url": "https://github.com/updatedev/update/issues"
+  },
+  "keywords": [
+    "update",
+    "create-update-app",
+    "update.dev",
+    "auth",
+    "billing",
+    "saas"
+  ],
   "scripts": {
     "build": "tsup src --minify",
     "clean": "rimraf dist",
