@@ -62,7 +62,7 @@ export async function createApp({
         username: "updatedotdev",
         name: "examples",
         branch: "main",
-        filePath: "next",
+        filePath: framework === "next" ? "next" : "react",
       }),
     {
       retries: 3,
