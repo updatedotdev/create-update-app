@@ -26,7 +26,7 @@ export async function create(directory: string | undefined) {
     directory = answers.projectDirectory as string;
   }
 
-  const { framework } = await prompts([
+  const { framework, auth } = await prompts([
     {
       type: "select",
       name: "framework",
@@ -43,11 +43,23 @@ export async function create(directory: string | undefined) {
       ],
       onState,
     },
+    {
+      type: "select",
+      name: "auth",
+      message: "Which authentication provider would you like to use?",
+      choices: [
+        {
+          title: "Supabase",
+          value: "supabase",
+        },
+      ],
+    },
   ]);
 
   await createApp({
     directory,
     framework,
+    auth,
   });
 
   logger.log("\nNext steps:\n");
