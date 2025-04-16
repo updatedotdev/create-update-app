@@ -8,13 +8,16 @@ import fs from "fs-extra";
 import retry from "async-retry";
 import { downloadAndExtractRepo } from "./utils/github";
 import { tryGitInit } from "./utils/git";
+import { getFilePath } from "./utils/get-file-path";
 
 export async function createApp({
   directory,
   framework,
+  auth,
 }: {
   directory: string;
   framework: "next" | "react";
+  auth: "supabase";
 }): Promise<void> {
   const online = await isOnline();
   if (!online) {
@@ -62,7 +65,7 @@ export async function createApp({
         username: "updatedotdev",
         name: "examples",
         branch: "main",
-        filePath: framework === "next" ? "next" : "react",
+        filePath: getFilePath(framework, auth),
       }),
     {
       retries: 3,

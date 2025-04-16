@@ -1,18 +1,19 @@
 {
-  "name": "create-update-app",
+  "name": "create-update",
   "description": "Create Update app with one command",
-  "version": "0.0.6",
+  "version": "0.0.2",
   "author": "Update Team <support@update.dev>",
   "homepage": "https://update.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/updatedev/update.git"
+    "url": "git+https://github.com/updatedotdev/create-update-app.git"
   },
   "bugs": {
-    "url": "https://github.com/updatedev/update/issues"
+    "url": "https://github.com/updatedotdev/create-update-app/issues"
   },
   "keywords": [
     "update",
+    "create-update",
     "create-update-app",
     "update.dev",
     "auth",
@@ -26,7 +27,8 @@
     "prepublishOnly": "npm run clean && npm run build"
   },
   "bin": {
-    "create-update-app": "./dist/index.js"
+    "create-update-app": "./dist/index.js",
+    "create-update": "./dist/index.js"
   },
   "files": [
     "dist"
